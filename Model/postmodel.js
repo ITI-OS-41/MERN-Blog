@@ -1,19 +1,139 @@
-const express = require("express");
-const mongoose = require("mongoose");
+// const express = require("express");
+// const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema({
-	title: {
-		type: String,
-		required: true,
-		trim: true,
-	},
-    desc: {
-        type:String,
-        required:true,
-    },
-	auth: {
-		type:String,
-	}
-})
+// const postSchema = new mongoose.Schema({
+// 	title: {
+// 		type: String,
+// 		required: true,
+// 		trim: true,
+// 	},
+// 	desc: {
+// 		type: String,
+// 		required: true,
+// 	},
+// 	auth: {
+// 		type: String,
+// 	},
+// 	avatar: {
+// 		type: String,
+// 	},
+// 	date:{
+// 		type: Date,
+// 		default: Date.now
+// 	},
+// 	likes: [
+// 		{
+// 			user: {
+// 				type: mongoose.Schema.Types.ObjectId,
+// 				ref: "users",
+// 			},
+// 		},
+// 	],
 
-module.exports=mongoose.model('blog',postSchema)
+// 	comments:[
+// 		{
+// 			user: {
+// 				type: mongoose.Schema.Types.ObjectId,
+// 				ref: "users",
+// 			},
+// 			desc: {
+// 				type: String,
+// 				required: true,
+// 			},
+// 			auth: {
+// 				type: String,
+// 			},
+// 			avatar: {
+// 				type: String,
+// 			},
+// 			date:{
+// 				type: Date,
+// 				default: Date.now
+// 			}
+// 		}
+// 	]
+// });
+
+// module.exports = Post = mongoose.model("blog", postSchema);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const PostSchema = new Schema({
+  user: {
+    type: Schema.Types.ObjectId
+  },
+  text: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String
+  },
+  avatar: {
+    type: String
+  },
+  likes: [
+    {
+      user: {
+        type: Schema.Types.ObjectId
+      }
+    }
+  ],
+  comments: [
+    {
+      user: {
+        type: Schema.Types.ObjectId
+      },
+      text: {
+        type: String,
+        required: true
+      },
+      name: {
+        type: String
+      },
+      avatar: {
+        type: String
+      },
+      date: {
+        type: Date,
+        default: Date.now
+      }
+    }
+  ],
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+module.exports = mongoose.model('post', PostSchema);

@@ -78,25 +78,88 @@ route.post(
 	}
 );
 
-route.post("/login", (req, res) => {
-	User.findOne({
-		email: req.body.email,
-	})
-		.then((found) => {
-			console.log("user Exist ya mony");
-			// const token = jwt.sign({_id:found._id},JWT_SECRET)
-			// res.json(found.name)
-			// const currentUserName = found.name
-			// console.log(found.name);
+// route.post("/login", (req, res) => {
+// 	User.findOne({
+// 		email: req.body.email,
+// 	})
+// 		.then((found) => {
+// 			console.log("user Exist ya mony");
+// 			// const token = jwt.sign({_id:found._id},JWT_SECRET)
+// 			// res.json(found.name)
+// 			// const currentUserName = found.name
+// 			// console.log(found.name);
 
-			if (found.password === req.body.password) {
-				res.send("1");
-			} else {
-				res.send("0");
+// 			if (found.password === req.body.password) {
+// 				res.send("1");
+// 			} else {
+// 				res.send("0");
+// 			}
+// 		})
+// 		.catch((err) => res.send("User Not Found.."));
+
+// 		const payload = {
+// 			user: {
+// 			  id: user.id
+// 			}
+// 		  };
+
+// });
+
+// ---------------------
+
+route.post(
+	"/login",
+	check("email", "Please include a valid email").isEmail(),
+	check("password", "Password is required").exists(),
+	async (req, res) => {
+		const errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(400).json({ errors: errors.array() });
+		}
+
+		const { email, password } = req.body;
+
+		try {
+			let user = await User.findOne({ email });
+
+			if (!user) {
+				return res
+					.status(400)
+					.json({ errors: [{ msg: "Invalid Credentials" }] });
 			}
-		})
-		.catch((err) => res.send("User Not Found.."));
-});
+
+			const isMatch = await bcrypt.compare(password, user.password);
+
+			if (!isMatch) {
+				return res
+					.status(400)
+					.json({ errors: [{ msg: "Invalid Credentials" }] });
+			}
+
+			const payload = {
+				user: {
+					id: user.id,
+				},
+			};
+
+			jwt.sign(
+				payload,
+				config.get("jwtSecret"),
+				{ expiresIn: "5 days" },
+				(err, token) => {
+					if (err) throw err;
+					res.json({ token });
+				}
+			);
+		} catch (err) {
+			console.error(err.message);
+			console.log("00000");
+			res.status(500).send("Server error");
+		}
+	}
+);
+
+// ---------------
 
 // get posts
 route.get("/posts", (req, res) => {
