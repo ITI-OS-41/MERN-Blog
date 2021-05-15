@@ -1,24 +1,29 @@
 import axios from 'axios';
-import React,{useState} from 'react';
+import React,{useState,FC, ReactElement, useEffect} from 'react';
 import Navbar from './Navbar';
+import {useHistory} from 'react-router-dom'
+
 
 function AddPost() {
+    
     const [title,settitle]=useState('')
     const [auth,setauth]=useState('')
     const [desc,setdesc]=useState('')
-    
+    const history=useHistory();
+
     function addpostfun(e)
     {
         e.preventDefault();
         
         const blog = {
             title:title,
-            desc:desc,
-            // auth:auth
+            text:desc,
+            auth:auth
         }
         axios.post('http://localhost:5001/add-post',blog)
-        .then(res=>console.log("done from add post"))
-        .catch(err=>console.log("error from add post"))
+        // axios.post('http://localhost:5001/api/posts',blog)
+        .then(res=>  history.push('/posts'))
+        .catch(err=>console.log("error from add post", err))
     }
     return (
        

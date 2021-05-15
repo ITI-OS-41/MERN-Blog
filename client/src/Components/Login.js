@@ -6,7 +6,7 @@ import "./Regstyle.css";
 
 function Login() {
     const [email,setemail]=useState('')
-    const [pass,setpass] = useState('')
+    const [password,setpass] = useState('')
     const [msg,setmsg]=useState('');
     const history=useHistory();
 function Loginfun (e)
@@ -15,22 +15,31 @@ function Loginfun (e)
     
     let data={
         email:email,
-        password:pass,
+        password:password,
     }
     axios
 			.post("http://localhost:5001/login", data)
 			.then((resp) => {
-				if (resp.data == "1") 
-                    // setmsg("Successful logined")
-                    history.push('/posts')
-				else if (resp.data == "0") 
-                setmsg("Invalid Credentials")
-                else
-                setmsg("No user Found, plz register♥")
+			// 	if (resp.data == "1") 
+            //       {  console.log("one");
+            //         // setmsg("Successful logined")
+            //         history.push('/posts')}
+			// 	else if (resp.data == "0") 
+            //   {  console.log("Zero");
+            //     setmsg("Invalid Credentials")}
 
+            //     else
+            //    { console.log("Elsee");
+            //     setmsg("No user Found, plz register♥")}
+                    if(resp.data) {
+                    history.push('/dashboard')
+                    // history.push('/posts')
+                }
+
+                    
 
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => setmsg("Invalid Credentials"));
 }
     
         return (
@@ -67,7 +76,7 @@ function Loginfun (e)
                                                     type="password"
                                                     className="form-control"
                                                     placeholder="Password"
-                                                    vlaue={pass}
+                                                    vlaue={password}
                                                     onChange={(e)=>{setpass(e.target.value)}}
                                                 />
                                             </div>

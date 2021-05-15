@@ -22,6 +22,7 @@ router.post(
 			const user = await User.findById(req.user.id).select("-password");
 
 			const newPost = new Post({
+        title: req.body.title,
 				text: req.body.text,
 				name: user.name,
 				avatar: user.avatar,
@@ -33,7 +34,7 @@ router.post(
 			res.json(post);
 		} catch (err) {
 			console.error(err.message);
-			// console.log(";;;;;;gf");
+			// console.log("enter err");
 			res.status(500).send("Server Error");
 		}
 	}
