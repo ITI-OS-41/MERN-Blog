@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import "./Regstyle.css";
-import { Link } from "react-router-dom";
+import { Link , Redirect} from "react-router-dom";
 import axios from "axios";
 // ------------------ REDUCER
 import { connect } from "react-redux";
@@ -33,12 +33,12 @@ import PropTypes from "prop-types";
 // 	};
 
 // ! OLD REG elly sha8ala
-const Register = ({ setAlert, register }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
 	// const [email, setemail] = useState("");
 	// const [pass, setpass] = useState("");
 	// const [confPass, setconfPass] = useState("");
 	// const [name, setname] = useState("");
-	// const [msg,setmsg]=useState('');
+	const [msg,setmsg]=useState('');
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -52,8 +52,8 @@ const Register = ({ setAlert, register }) => {
 		e.preventDefault();
 		
 		if (password !== confPass) {
-			// setmsg('Passwords are not the same 	 ');
-			setAlert("Passwords are not the same 	 ", "danger");
+			setmsg('Passwords are not the same 	 ');
+			// setAlert("Passwords are not the same 	 ", "danger");
 		}
 		// {let data = {
 		// 	email: email,
@@ -74,7 +74,9 @@ const Register = ({ setAlert, register }) => {
 	}
 
 	// ! END OF  OLD REG elly sha8ala
-
+if(isAuthenticated){
+	return <Redirect to="/posts" />
+}
 	return (
 		<div className="container ">
 			<section className="contact-from pt-4">
@@ -90,7 +92,7 @@ const Register = ({ setAlert, register }) => {
 									</div>
 								</div>
 								<form _lpchecked="1" onSubmit={(e) => Register(e)}>
-									{/* <h2 className="p-x text-center">{msg}</h2> */}
+									<h2 className="p-x text-center">{msg}</h2>
 									<div className="row align-items-center">
 										<div className="col mt-4">
 											<div className="form-group ">
@@ -181,5 +183,9 @@ const Register = ({ setAlert, register }) => {
 Register.propTypes = {
 	setAlert: PropTypes.func.isRequired,
 	register: PropTypes.func.isRequired,
+	isAuthenticated:PropTypes.bool,
 };
-export default connect(null, { setAlert, register })(Register);
+const mapStateToProp = state =>({
+    isAuthenticated : state.auth.isAuthenticated
+})
+export default connect(mapStateToProp, { setAlert, register })(Register);
