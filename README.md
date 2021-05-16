@@ -22,6 +22,8 @@ here is some page from the blog
 ![profile page](https://i.ibb.co/10pWk11/Screenshot-58.png)
 
 # Add post
+**_note that name input is disabled, so u can't change the name of the author, it's ur name bt default_**
+
 ![add post](https://i.ibb.co/55PHTwK/Screenshot-59.png)
 ![after fill add post form](https://i.ibb.co/ZzYFprw/Screenshot-60.png)
 
