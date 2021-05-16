@@ -49,7 +49,7 @@ function Login({ login, isAuthenticated }) {
 	// Redirect if logged in
 	if (isAuthenticated) {
 		// return <Redirect to="/posts" />;
-         history.push('/posts')
+         history.push('/dashboard')
 	}
 	return (
 		<div className="container">

@@ -1,12 +1,23 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getCurrentUserProfile } from "../actions/profile";
-const Dashboard = ({ getCurrentUserProfile, auth, profile}) => {
-    useEffect(() => {
-        getCurrentUserProfile();
-      }, [getCurrentUserProfile]);
-	return <div>Dashhhh</div>;
+import  Navbar  from "./Navbar";
+import { Link } from "react-router-dom";
+const Dashboard = ({ getCurrentUserProfile, auth : {user}, profile : {profile, loading} }) => {
+	useEffect(() => {
+		getCurrentUserProfile();
+	}, [getCurrentUserProfile]);
+	return (
+
+		<div>
+			<h1> Welcom {user && user.name}</h1>
+			{/* <Navbar /> */}
+			{/* <div>Dashhhh</div> */}
+			<Link to="/create-profile" > Create Profile</Link>
+			
+		</div>
+	);
 };
 
 Dashboard.propTypes = {

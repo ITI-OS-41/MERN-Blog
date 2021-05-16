@@ -23,9 +23,9 @@ function Navbar({ auth: { isAuthenticated, loading }, logout }) {
 					</ul>
 				</div>
 				<div className="mx-auto order-0">
-					<a className="navbar-brand mx-auto" href="#">
-						Blog
-					</a>
+					<Link className="navbar-brand mx-auto" to="/dashboard">
+						Dashboard
+					</Link>
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -37,11 +37,11 @@ function Navbar({ auth: { isAuthenticated, loading }, logout }) {
 				</div>
 				<div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
 					<ul className="navbar-nav ml-auto">
-						{/* <li className="nav-item">
-							<Link className="nav-link" to="#">
-								Hello USer....
+						<li className="nav-item">
+							<Link className="nav-link" to="/profile">
+								Profile
 							</Link>
-						</li> */}
+						</li>
 						<li className="nav-item">
 							<Link className="nav-link" to="/" onClick={logout}>
 								Log Out
@@ -59,36 +59,22 @@ function Navbar({ auth: { isAuthenticated, loading }, logout }) {
 				<div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
 					<ul className="navbar-nav mr-auto">
 						<li className="nav-item active">
-							<Link className="nav-link" to="/posts">
+							{/* <Link className="nav-link" to="/posts">
 								Home
-							</Link>
+							</Link> */}
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link" to="/add-post">
+							{/* <Link className="nav-link" to="/add-post">
 								Add Post
-							</Link>
+							</Link> */}
 						</li>
-						{/* <li className="nav-item">
-							<a className="nav-link" href="#">
-								Link
-							</a>
-						</li> */}
-						{/* <li className="nav-item">
-							<a className="nav-link" href="#">
-								Link
-							</a>
-						</li> */}
-						{/* <li className="nav-item">
-							<a className="nav-link" href="#">
-								Link
-							</a>
-						</li> */}
+						
 					</ul>
 				</div>
 				<div className="mx-auto order-0">
-					<a className="navbar-brand mx-auto" href="#">
+					{/* <a className="navbar-brand mx-auto" href="#">
 						Blog
-					</a>
+					</a> */}
 					<button
 						className="navbar-toggler"
 						type="button"
@@ -100,11 +86,7 @@ function Navbar({ auth: { isAuthenticated, loading }, logout }) {
 				</div>
 				<div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
 					<ul className="navbar-nav ml-auto">
-						<li className="nav-item">
-							<Link className="nav-link" to="#">
-								Hello USer....
-							</Link>
-						</li>
+						
 						<li className="nav-item">
 							<Link className="nav-link" to="/">
 								Login

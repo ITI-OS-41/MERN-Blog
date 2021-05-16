@@ -29,7 +29,7 @@ function AddPost() {
 		// 	)}
 		// </div>
 		<div>
-			<Navbar />
+			{/* <Navbar /> */}
 			{post.map((data, key) =>
 			<Card className="my-5" sborder="primary">
 				<Card.Header as="h5">{data.title}</Card.Header>

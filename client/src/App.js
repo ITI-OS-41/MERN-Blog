@@ -16,6 +16,9 @@ import { loadUser } from "./actions/auth";
 import LongPull from "./Components/subscriber";
 import Dashboard from "./Components/Dashboard";
 import setAuthToken from './token/setAuthToken';
+import Navbar  from "./Components/Navbar";
+import CreateProfile  from "./Components/create-profile";
+
 if (localStorage.token) {
 	setAuthToken(localStorage.token);
 }
@@ -26,6 +29,7 @@ function App() {
 	return (
 		<Provider store={store}>
 			<Router>
+				<Navbar />
 				<Switch>
 					<Route exact path="/" component={Login}></Route>
 					<Route exact path="/register" component={Register}></Route>
@@ -34,6 +38,7 @@ function App() {
 					<Route exact path="/msgs" component={pullForm}></Route>
 					<Route exact path="/profile" component={profile}></Route>
 					<Route exact path="/dashboard" component={Dashboard}></Route>
+					<Route exact path="/create-profile" component={CreateProfile}></Route>
 
 					{/* <Route exact path='/msgs/subscriber' component={LongPull}></Route> */}
 					{/* <Route exact path='/msgs' component={LongPull}></Route> */}

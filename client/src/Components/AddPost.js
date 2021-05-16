@@ -28,7 +28,7 @@ function AddPost() {
     return (
        
         <div>
-             <Navbar/>
+             {/* <Navbar/> */}
             <div className="container">
             <section className="contact-from pt-4">
                 <div className="container">
