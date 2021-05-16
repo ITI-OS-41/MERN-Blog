@@ -8,7 +8,7 @@ here is some page from the blog
 # Registration ERROR sample:
 ![REG ERR](https://i.ibb.co/Hg4DQg9/Screenshot-52.png)
 
-# Home Page:
+# Home Page (view all posts):
 ![Home](https://i.ibb.co/10qf1mM/Screenshot-54.png)
 
 # Creating and editing Profile
@@ -25,7 +25,7 @@ here is some page from the blog
 ![add post](https://i.ibb.co/55PHTwK/Screenshot-59.png)
 ![after fill add post form](https://i.ibb.co/ZzYFprw/Screenshot-60.png)
 
-# view all posts 
+# new post after posting :
 ![view all posts](https://i.ibb.co/pwpG4yh/Screenshot-61.png)
 
 # After LOGOUT u can login again =D :
