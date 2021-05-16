@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getCurrentUserProfile } from "../actions/profile";
 import  Navbar  from "./Navbar";
+import { Link } from "react-router-dom";
 
 // import App from "./App"; //import into index.js file
 // const { currentUserName } = require('../../../routes/mainroute');
@@ -72,9 +73,9 @@ const Profile = ({ getCurrentUserProfile, auth: {user}, profile: {profile, loadi
 									<h3>
 										Welcom {user && user.name}
 									</h3>
-									<a href="#" className="btn btn-outline-dark btn-sm btn-block">
+									<Link to="/create-profile" className="btn btn-outline-dark btn-sm btn-block">
 										Edit profile
-									</a>
+									</Link>
 								
 							</div>
 						</div>

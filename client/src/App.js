@@ -18,6 +18,7 @@ import Dashboard from "./Components/Dashboard";
 import setAuthToken from './token/setAuthToken';
 import Navbar  from "./Components/Navbar";
 import CreateProfile  from "./Components/create-profile";
+import Posts  from "./Components/posts";
 
 if (localStorage.token) {
 	setAuthToken(localStorage.token);
@@ -33,13 +34,14 @@ function App() {
 				<Switch>
 					<Route exact path="/" component={Login}></Route>
 					<Route exact path="/register" component={Register}></Route>
-					<Route exact path="/posts" component={Post}></Route>
+					{/* <Route exact path="/posts" component={Post}></Route> */}
 					<Route exact path="/add-post" component={AddPost}></Route>
 					<Route exact path="/msgs" component={pullForm}></Route>
 					<Route exact path="/profile" component={profile}></Route>
 					<Route exact path="/dashboard" component={Dashboard}></Route>
+					<Route exact path="/posts" component={Posts}></Route>
 					<Route exact path="/create-profile" component={CreateProfile}></Route>
-
+					
 					{/* <Route exact path='/msgs/subscriber' component={LongPull}></Route> */}
 					{/* <Route exact path='/msgs' component={LongPull}></Route> */}
 				</Switch>

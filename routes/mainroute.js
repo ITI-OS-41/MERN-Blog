@@ -215,12 +215,12 @@ route.get("/posts", (req, res) => {
 });
 
 // /add post
-route.post("/add-post", (req, res) => {
-	let adding = new Blog(req.body);
-	adding.save((err, docs) => {
-		if (err) res.json("Try again");
-		else res.json("Posted :D");
-	});
-});
+// route.post("/add-post", (req, res) => {
+// 	let adding = new Blog(req.body);
+// 	adding.save((err, docs) => {
+// 		if (err) res.json("Try again");
+// 		else res.json("Posted :D");
+// 	});
+// });
 
 module.exports = route;

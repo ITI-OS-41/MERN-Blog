@@ -13,7 +13,7 @@ app.use(express.json());
 app.use("/", MainRouter);
 app.use("/api/auth", require("./routes/auth"));
 app.use("/profile", require("./routes/profile"));
-// app.use("/api/posts", require("./routes/posts"));
+app.use("/add-post", require("./routes/posts"));
 // app.use("/add-post", require("./routes/mainroute"));
 const Mongourl = " mongodb://localhost:27017/mernproject";
 mongoose.connect(

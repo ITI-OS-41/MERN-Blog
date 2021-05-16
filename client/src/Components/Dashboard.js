@@ -2,20 +2,35 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getCurrentUserProfile } from "../actions/profile";
-import  Navbar  from "./Navbar";
+import Navbar from "./Navbar";
+import { Badge, Button, Row } from "react-bootstrap";
+
 import { Link } from "react-router-dom";
-const Dashboard = ({ getCurrentUserProfile, auth : {user}, profile : {profile, loading} }) => {
+const Dashboard = ({
+	getCurrentUserProfile,
+	auth: { user },
+	profile: { profile, loading },
+}) => {
 	useEffect(() => {
 		getCurrentUserProfile();
 	}, [getCurrentUserProfile]);
 	return (
-
 		<div>
-			<h1> Welcom {user && user.name}</h1>
-			{/* <Navbar /> */}
-			{/* <div>Dashhhh</div> */}
-			<Link to="/create-profile" > Create Profile</Link>
-			
+			<Row className="justify-content-md-center">
+				<h1> Welcom {user && user.name}</h1>
+				{/* <Badge variant="warning"><Link to="/create-profile" > Create Profile</Link></Badge> */}
+			</Row>
+			<Row className="justify-content-md-center">
+				<Button variant="warning" size="lg">
+					<Link to="/create-profile" style={{ color: "#FFF" }}>
+						
+						Create Profile
+					</Link>
+				</Button>
+				{/* <Navbar /> */}
+				{/* <div>Dashhhh</div> */}
+				<span className="badge badge-success"></span>
+			</Row>
 		</div>
 	);
 };
